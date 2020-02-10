@@ -2,46 +2,50 @@ package demo3Sort;
 
 import java.util.Arrays;
 
-public class InsertionSort {
+public class BinaryInsertionSort {
+	/*
+	 »ù±¾Ë¼ÏëÊÇ£ºÃ¿²½½«Ò»¸ö´ıÅÅĞòµÄ¼ÇÂ¼£¬°´Æä¹Ø¼üÂëÖµµÄ´óĞ¡²åÈëÇ°ÃæÒÑ¾­ÅÅĞò
+	 	µÄÎÄ¼şÖĞÊÊµ±Î»ÖÃÉÏ£¬Ö±µ½È«²¿²åÈëÍêÎªÖ¹¡£·ÖÎªÖ±½Ó²åÈëºÍÕÛ°ë²éÕÒ²åÈë¡£
+	 ²Î¿¼£ºhttps://baike.baidu.com/item/%E6%8A%98%E5%8D%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/8208853#1
+	 */
 	public static void main(String[] args) {
 		//int arr[] = new int[] {-1,5,1,7,2,6,9,3,50,-3,14,11,19,48,20};
 		int arr[] = new int[] {-1,5,1,7,-1,6,9,11,50,-3,14,11,-4,48,2};
 		System.out.println(Arrays.toString(arr));
-		insertionSort(arr);
-		System.out.println(Arrays.toString(arr));
+		binaryInsertionSort(arr);
 	}
-	/*
-	 åŸºæœ¬æ€æƒ³æ˜¯ï¼šæ¯æ­¥å°†ä¸€ä¸ªå¾…æ’åºçš„è®°å½•ï¼ŒæŒ‰å…¶å…³é”®ç å€¼çš„å¤§å°æ’å…¥å‰é¢å·²ç»æ’åº
-	 	çš„æ–‡ä»¶ä¸­é€‚å½“ä½ç½®ä¸Šï¼Œç›´åˆ°å…¨éƒ¨æ’å…¥å®Œä¸ºæ­¢ã€‚åˆ†ä¸ºç›´æ¥æ’å…¥å’ŒæŠ˜åŠæŸ¥æ‰¾æ’å…¥ã€‚
-	 */
+	
 	/**
 	 * 
-	 * @param arr éœ€è¦æ’åºçš„æ•°ç»„
-	 * @param æŠ˜åŠæ’å…¥
+	 * @param arr ĞèÒªÅÅĞòµÄÊı×é
+	 * @param ÕÛ°ë²åÈë
 	 */
-	public static void insertionSort(int arr[]) {
+	public static void binaryInsertionSort(int[] arr) {
 		int temp=0,index=0;
 		int left,right;
 		for(int i=1;i<arr.length;i++) {
-			temp = arr[i];
-			//æŠ˜åŠæŸ¥æ‰¾
+			temp = arr[i];//¸´ÖÆ³öĞèÒªÅÅĞòµÄÖµ
+			//ÕÛ°ë²éÕÒ
 			left=0;
 			right=i-1;
 			while(right>=left) {
-				int middle = (left+right)/2;
+				int middle = (left+right)/2;//¶ş·ÖÕÒµ½ÖĞ¼äÏÂ±ê
 				if(arr[i]==arr[middle]) {
+					//ËµÃ÷ÓĞÏàÍ¬ÔªËØ£¬ÎªÁËÎÈ¶¨Ôò·ÅÔÚºóÒ»Î»
 					index = middle+1;
 					right --;
 					continue;
 				}else if(arr[i]>arr[middle]) {
+					//Èç¹û´óÓÚÔò·ÅÔÚºóÒ»Î»
 					left=middle+1;
 					index = middle+1;
 				}else {
+					//Èç¹ûĞ¡ÓÚÔò·ÅÔÚµ±Ç°Î»ÖÃ
 					right = middle-1;
 					index = middle;
 				}
-				
 			}
+			//ÔªËØÏòºóÅ²Î»ÖÃ
 			for(int k=i;k>index;k--) {
 				arr[k] = arr[k-1];
 			}
