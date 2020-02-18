@@ -1,0 +1,17 @@
+﻿<Window x:Class="FileExplorer_WPF.Window_Delete"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FileExplorer_WPF"
+        mc:Ignorable="d"
+        Title="Window_Delete_数据无价，谨慎操作" HorizontalAlignment="Center" Width="500" Height="210" MaxWidth="500" MaxHeight="230" VerticalAlignment="Center">
+    <Grid Background="#F0F0F0">
+        <Button x:Name="btn_yes" Content="是" HorizontalAlignment="Left" Margin="310,140,0,0" VerticalAlignment="Top" Style="{StaticResource Btn_YesOrNo}" BorderBrush="Blue" Click="btn_yes_Click"/>
+        <Button x:Name="btn_no" Content="否" HorizontalAlignment="Left" Margin="399,140,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource Btn_YesOrNo}" Click="btn_no_Click"/>
+        <TextBlock x:Name="textBlock_Info" HorizontalAlignment="Left" Margin="170,48,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="80" Width="280" LineHeight="10" FontSize="13"/>
+        <Image x:Name="image_icon" HorizontalAlignment="Left" Height="80" Width="80" Margin="53,48,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_prompt" HorizontalAlignment="Left" Margin="36,10,0,0" TextWrapping="Wrap" Text="您是否将选中文件永久删除？" VerticalAlignment="Top" Width="317" FontSize="14"/>
+        <Button x:Name="button" Content="移入回收站" HorizontalAlignment="Left" Margin="222,140,0,0" VerticalAlignment="Top"  Style="{StaticResource Btn_YesOrNo}"/>
+    </Grid>
+</Window>

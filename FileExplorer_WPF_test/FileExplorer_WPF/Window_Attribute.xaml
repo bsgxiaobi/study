@@ -1,0 +1,64 @@
+﻿<Window x:Class="FileExplorer_WPF.Window_Attribute"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FileExplorer_WPF"
+        mc:Ignorable="d"
+        Title="Window_Attribute" Height="520" Width="400">
+    <Grid Name="Grid_main">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="15*"></RowDefinition>
+            <RowDefinition Height="15*"></RowDefinition>
+            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition Height="25*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="25*"></ColumnDefinition>
+            <ColumnDefinition Width="69*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="6"  Background="#F0F0F0" />
+        <Border Grid.Row="0" Grid.Column="3" Grid.RowSpan="6"  Background="#F0F0F0" />
+        <Border Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  Background="#F0F0F0" />
+        <Image x:Name="image_icon" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="70" Grid.RowSpan="2" VerticalAlignment="Top" Width="70"/>
+        <Label x:Name="lb_name" Grid.Row="1" Grid.Column="2" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="2" Grid.Column="2">
+            <Label x:Name="lb_type" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label x:Name="lb_file_system" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+        </StackPanel>
+        <StackPanel  Grid.Row="3" Grid.Column="2">
+            <Label x:Name="lb_dir" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label x:Name="lb_size" Grid.Row="3" Grid.Column="1" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label x:Name="lb_include" Content="Lable" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </StackPanel>
+        <StackPanel Name="StackPanel_time" Grid.Row="4" Grid.Column="2">
+            <Label x:Name="lb_create_time" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label x:Name="lb_modify_time" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label x:Name="lb_access_time" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </StackPanel>
+        <!--========= 标题 =========-->
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <Label x:Name="lb_type_title" Content="文件类型：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label x:Name="lb_file_system_title" Content="文件系统：" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <Label x:Name="lb_dir_title" Content="文件路径：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label x:Name="lb_size_title" Content="文件大小：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label x:Name="lb_include_title" Content="包含数量：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </StackPanel>
+        <StackPanel Name="StackPanel_time_title" Grid.Row="4" Grid.Column="1">
+            <Label x:Name="lb_create_time_title" Content="创建时间：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label x:Name="lb_modify_time_title" Content="修改时间：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label x:Name="lb_access_time_title" Content="访问时间：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </StackPanel>
+
+        <Grid Name="GridPie" Grid.Row="5" Grid.Column="2" Margin="120,0,0,0.4" HorizontalAlignment="Left" >
+
+        </Grid>
+
+    </Grid>
+</Window>

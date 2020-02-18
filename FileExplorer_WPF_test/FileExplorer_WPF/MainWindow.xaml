@@ -1,0 +1,157 @@
+﻿<Window x:Class="FileExplorer_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FileExplorer_WPF"
+        mc:Ignorable="d"
+        Title="文件资源管理器_WPF" Height="720" Width="1200" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Window.Resources>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="18*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="71*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"></ColumnDefinition>
+            <ColumnDefinition Width="80*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Row="2"></Rectangle>
+        <TabControl x:Name="tabControl" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalAlignment="Left" Height="128" VerticalAlignment="Top" Width="1194" Margin="0,0,-0.4,0">
+            <TabItem Header="主 页" Width="75">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="查 看" Width="75">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="帮 助" Width="75">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <Button x:Name="btn_last_path" Content="↑" HorizontalAlignment="Left" VerticalAlignment="Top" Width="15" Height="23" Click="btn_last_path_Click"/>
+            <TextBox x:Name="txt_Current_Path" Height="23" Width="680" Margin="10,0,0,0" TextWrapping="Wrap" Text="我的电脑" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="txt_Find" HorizontalAlignment="Left" Height="23" Margin="5,0,0,0" TextWrapping="Wrap" Text="搜索" VerticalAlignment="Top" Width="210" VerticalContentAlignment="Center"/>
+            <Button x:Name="btn_Find_Files" Content="find" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="25"/>
+        </StackPanel>
+
+        <TreeView x:Name="treeView_Dir" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Height="495" Margin="0,2,0,0" VerticalAlignment="Top" Width="238"
+                  TreeViewItem.Expanded="treeView_Dir_Expanded" MouseDoubleClick="treeView_Dir_MouseDoubleClick">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
+                    <StackPanel Orientation="Horizontal" Height="20">
+                        <Image VerticalAlignment="Center" Source="{Binding Icon}"  Width="16" Height="16" Margin="0,0,5,0"></Image>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding DisplayName}"></TextBlock>
+                        <StackPanel.ToolTip>
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}" TextWrapping="Wrap" MaxWidth="200" ></TextBlock>
+                        </StackPanel.ToolTip>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+            <TreeView.Resources>
+                <Style TargetType="TreeViewItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#CCE8FF"></Setter>
+                        </Trigger>
+                        <!--
+                        <Trigger Property="IsExpanded" Value="True">
+                            <Setter Property="Background" Value="#CC0033"></Setter>
+                        </Trigger>
+                        -->
+                    </Style.Triggers>
+                </Style>
+            </TreeView.Resources>
+        </TreeView>
+
+        <DataGrid x:Name="dataGrid_Info" Grid.Row="2" ItemsSource="{Binding}" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                      AutoGenerateColumns="False" BorderBrush="Black" MouseDoubleClick="dataGrid_Info_MouseDoubleClick" GridLinesVisibility="None" Background="White" 
+                      MouseRightButtonDown="dataGrid_Info_MouseRightButtonDown" SelectionChanged="dataGrid_Info_SelectionChanged" Height="495" Margin="4.6,2,-0.4,0" Width="951" Grid.Column="1" >
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn IsReadOnly="True" Width="25">
+                    <!--
+                        <DataGridCheckBoxColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <CheckBox Name="CheckBox_Header" Click="CheckBox_Header_Click" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+                            </DataTemplate>
+                        </DataGridCheckBoxColumn.HeaderTemplate>
+                        -->
+                    <!--
+                        <DataGridCheckBoxColumn.ElementStyle>
+                            <Style TargetType="CheckBox">
+                            </Style>
+                        </DataGridCheckBoxColumn.ElementStyle>
+                        -->
+                </DataGridCheckBoxColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding IconPath}" Margin="3,0,3,0" Width="16" Height="16"></Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="名称" IsReadOnly="True" Binding="{Binding FileName}" Width="300" Foreground="Black"/>
+                <DataGridTextColumn Header="日期" IsReadOnly="True" Binding="{Binding FileDate}" Width="150" Foreground="Gray"/>
+                <DataGridTextColumn Header="类型" IsReadOnly="True" Binding="{Binding FileType}" Width="100" Foreground="Gray"/>
+                <DataGridTextColumn Header="大小" IsReadOnly="True" Binding="{Binding FileSize}" Width="100" Foreground="Gray"/>
+            </DataGrid.Columns>
+            <!--右键菜单-->
+            <DataGrid.ContextMenu>
+                <ContextMenu Name="dataGrid_Info_Menu" StaysOpen="true">
+                    <MenuItem Name="MenuItem_Open" Header="打开" FontWeight="Bold" Click="MenuItem_Open_Click"/>
+                    <MenuItem Name="MenuItem_Refresh" Header="刷新" Click="MenuItem_Refresh_Click"/>
+                    <Separator></Separator>
+                    <MenuItem Name="MenuItem_Uncheck" Header="取消选中" Click="MenuItem_Uncheck_Click"/>
+                    <MenuItem Name="MenuItem_MultiSelect" Header="多选（bug）" IsEnabled="False" Click="MenuItem_MultiSelect_Click"/>
+                    <Separator></Separator>
+                    <!--分割条-->
+                    <MenuItem Name="MenuItem_Copy" Header="复制" Click="MenuItem_Copy_Click"/>
+                    <MenuItem Name="MenuItem_Shear" Header="剪切" Click="MenuItem_Shear_Click"/>
+                    <MenuItem Name="MenuItem_Paste" Header="粘贴" Click="MenuItem_Paste_Click"/>
+                    <Separator></Separator>
+                    <MenuItem Name="MenuItem_Delete" Header="删除" Click="MenuItem_Delete_Click"/>
+                    <MenuItem Name="MenuItem_Rename" Header="重命名" Click="MenuItem_Rename_Click"/>
+                    <Separator></Separator>
+                    <MenuItem Name="MenuItem_Attribute" Header="属性" Click="MenuItem_Attribute_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.RowStyle >
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <!--设置鼠标移动到行时的颜色-->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FFF1FA"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.CellStyle >
+                <Style TargetType="DataGridCell">
+                    <Style.Triggers >
+                        <!--鼠标点击行时-->
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#CCE8FF"/>
+
+                            <Setter Property="BorderBrush"  Value="Transparent"/>
+                            <!--边框刷-->
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter Property="BorderBrush"  Value="Transparent"/>
+                            <!--边框刷-->
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
+
+        <TextBox x:Name="textBox_test" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="asaasdasd" VerticalAlignment="Top" Width="798"/>
+
+        <!--
+        <GridSplitter Grid.Row="2" Grid.Column="0" ShowsPreview="True" Width="3" Background="Gray"></GridSplitter>
+        -->
+    </Grid>
+</Window>
