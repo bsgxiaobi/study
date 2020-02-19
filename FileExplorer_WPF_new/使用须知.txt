@@ -4,14 +4,14 @@
          .NET版本：.NET Framework 4.5.2
             VS版本：Visual Studio 2015 社区版
           开源协议：MIT(MIT License)
-     GitHub地址：https://github.com/bsgxiaobi/study  内"FileExplorer_WPF_new"文件夹
+     GitHub地址：https://github.com/bsgxiaobi/study  内"FileExplorer_WPF_new"
    快速下载方法：在github里进入文件夹目录，复制浏览器地址链接，
-	          进入下载站点：https://www.itsvse.com/downgit，粘贴链接进行下载。
+	          进入国内下载站点：https://www.itsvse.com/downgit，粘贴链接进行下载。
 	          国内CDN,速度很快
 	          
 ==============================
 注意:
-1，DataGrid区域的多选存在显示bug：
+1，DataGrid区域的多选存在显示bug，描述：
      在有滚动条时,多选中某些列之后，将已选中的行滚动到不可见区域后，
 在最末尾会有未选中的行变成一选中效果，且无法再次点击取消，且被滚动到不可见区域的行可能会变成未选中。
 但是选中的多选中的数据没有问题，因为在选中时是将当前选中行的索引添加到独立链表里。不会造成多选中的数据被更改。
