@@ -4,7 +4,7 @@
          .NET版本：.NET Framework 4.5.2
             VS版本：Visual Studio 2015 社区版
           开源协议：MIT(MIT License)
-     GitHub地址：https://github.com/bsgxiaobi/study  内"FileExplorer_WPF_new"
+     GitHub地址：https://github.com/bsgxiaobi/study  内"FileExplorer_WPF"
    快速下载方法：在github里进入文件夹目录，复制浏览器地址链接，
 	          进入国内下载站点：https://www.itsvse.com/downgit，粘贴链接进行下载。
 	          国内CDN,速度很快
