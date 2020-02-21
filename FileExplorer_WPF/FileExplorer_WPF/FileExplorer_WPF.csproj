@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EFBD9037-D0A5-4CEA-9C89-BFC7553D8E6F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FileExplorer_WPF</RootNamespace>
+    <AssemblyName>FileExplorer_WPF</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="FileOperations.cs" />
+    <Compile Include="PieChartDrawer.cs" />
+    <Compile Include="PropertyNodeItem.cs" />
+    <Compile Include="RingPart.cs" />
+    <Compile Include="SectorPart.cs" />
+    <Compile Include="Window_Attribute.xaml.cs">
+      <DependentUpon>Window_Attribute.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window_Delete.xaml.cs">
+      <DependentUpon>Window_Delete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window_Rename.xaml.cs">
+      <DependentUpon>Window_Rename.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileNode.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_Attribute.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_Delete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_Rename.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img_FileTypeIcon\aac.png" />
+    <Resource Include="img_FileTypeIcon\accdb.png" />
+    <Resource Include="img_FileTypeIcon\ai.png" />
+    <Resource Include="img_FileTypeIcon\aiff.png" />
+    <Resource Include="img_FileTypeIcon\avi.png" />
+    <Resource Include="img_FileTypeIcon\bmp.png" />
+    <Resource Include="img_FileTypeIcon\c.png" />
+    <Resource Include="img_FileTypeIcon\cpp.png" />
+    <Resource Include="img_FileTypeIcon\css.png" />
+    <Resource Include="img_FileTypeIcon\csv.png" />
+    <Resource Include="img_FileTypeIcon\dat.png" />
+    <Resource Include="img_FileTypeIcon\dmg.png" />
+    <Resource Include="img_FileTypeIcon\doc.png" />
+    <Resource Include="img_FileTypeIcon\docx.png" />
+    <Resource Include="img_FileTypeIcon\dotx.png" />
+    <Resource Include="img_FileTypeIcon\dwg.png" />
+    <Resource Include="img_FileTypeIcon\dxf.png" />
+    <Resource Include="img_FileTypeIcon\eml.png" />
+    <Resource Include="img_FileTypeIcon\eps.png" />
+    <Resource Include="img_FileTypeIcon\exe.png" />
+    <Resource Include="img_FileTypeIcon\fla.png" />
+    <Resource Include="img_FileTypeIcon\flv.png" />
+    <Resource Include="img_FileTypeIcon\folder.png" />
+    <Resource Include="img_FileTypeIcon\gif.png" />
+    <Resource Include="img_FileTypeIcon\h.png" />
+    <Resource Include="img_FileTypeIcon\hpp.png" />
+    <Resource Include="img_FileTypeIcon\html.png" />
+    <Resource Include="img_FileTypeIcon\ics.png" />
+    <Resource Include="img_FileTypeIcon\ind.png" />
+    <Resource Include="img_FileTypeIcon\ini.png" />
+    <Resource Include="img_FileTypeIcon\iso.png" />
+    <Resource Include="img_FileTypeIcon\java.png" />
+    <Resource Include="img_FileTypeIcon\jpeg.png" />
+    <Resource Include="img_FileTypeIcon\jpg.png" />
+    <Resource Include="img_FileTypeIcon\js.png" />
+    <Resource Include="img_FileTypeIcon\jsf.png" />
+    <Resource Include="img_FileTypeIcon\key.png" />
+    <Resource Include="img_FileTypeIcon\less.png" />
+    <Resource Include="img_FileTypeIcon\mid.png" />
+    <Resource Include="img_FileTypeIcon\midi.png" />
+    <Resource Include="img_FileTypeIcon\mov.png" />
+    <Resource Include="img_FileTypeIcon\mp3.png" />
+    <Resource Include="img_FileTypeIcon\mp4.png" />
+    <Resource Include="img_FileTypeIcon\mpeg.png" />
+    <Resource Include="img_FileTypeIcon\mpg.png" />
+    <Resource Include="img_FileTypeIcon\odf.png" />
+    <Resource Include="img_FileTypeIcon\ods.png" />
+    <Resource Include="img_FileTypeIcon\odt.png" />
+    <Resource Include="img_FileTypeIcon\otp.png" />
+    <Resource Include="img_FileTypeIcon\ots.png" />
+    <Resource Include="img_FileTypeIcon\ott.png" />
+    <Resource Include="img_FileTypeIcon\pdf.png" />
+    <Resource Include="img_FileTypeIcon\php.png" />
+    <Resource Include="img_FileTypeIcon\png.png" />
+    <Resource Include="img_FileTypeIcon\ppt.png" />
+    <Resource Include="img_FileTypeIcon\pptx.png" />
+    <Resource Include="img_FileTypeIcon\proj.png" />
+    <Resource Include="img_FileTypeIcon\psd.png" />
+    <Resource Include="img_FileTypeIcon\pst.png" />
+    <Resource Include="img_FileTypeIcon\pub.png" />
+    <Resource Include="img_FileTypeIcon\py.png" />
+    <Resource Include="img_FileTypeIcon\qt.png" />
+    <Resource Include="img_FileTypeIcon\rar.png" />
+    <Resource Include="img_FileTypeIcon\rb.png" />
+    <Resource Include="img_FileTypeIcon\readme.png" />
+    <Resource Include="img_FileTypeIcon\rtf.png" />
+    <Resource Include="img_FileTypeIcon\sass.png" />
+    <Resource Include="img_FileTypeIcon\scss.png" />
+    <Resource Include="img_FileTypeIcon\settings.png" />
+    <Resource Include="img_FileTypeIcon\sql.png" />
+    <Resource Include="img_FileTypeIcon\text.png" />
+    <Resource Include="img_FileTypeIcon\tga.png" />
+    <Resource Include="img_FileTypeIcon\tgz.png" />
+    <Resource Include="img_FileTypeIcon\tiff.png" />
+    <Resource Include="img_FileTypeIcon\txt.png" />
+    <Resource Include="img_FileTypeIcon\url.png" />
+    <Resource Include="img_FileTypeIcon\vsd.png" />
+    <Resource Include="img_FileTypeIcon\wav.png" />
+    <Resource Include="img_FileTypeIcon\wma.png" />
+    <Resource Include="img_FileTypeIcon\wmv.png" />
+    <Resource Include="img_FileTypeIcon\xls.png" />
+    <Resource Include="img_FileTypeIcon\xlsx.png" />
+    <Resource Include="img_FileTypeIcon\xlsx_mac.png" />
+    <Resource Include="img_FileTypeIcon\xlsx_win.png" />
+    <Resource Include="img_FileTypeIcon\xml.png" />
+    <Resource Include="img_FileTypeIcon\yml.png" />
+    <Resource Include="img_FileTypeIcon\zip.png" />
+    <Resource Include="img_FileTypeIcon\_blank.png" />
+    <Resource Include="img_FileTypeIcon\_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img_FileTypeIcon\disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img_FileTypeIcon\computer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img_FileTypeIcon\dll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img_FileTypeIcon\FoldersAndFiles.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
